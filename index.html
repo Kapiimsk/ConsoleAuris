@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Console Auris</title>
+    <style>
+        body {
+            background: #151515;
+            color: black;
+            font-family: 'courier new', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+        h1, h2 {
+            margin: 0;
+            color: black;
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        input {
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #222;
+            color: black;
+            font-size: 16px;
+            width: calc(100% - 24px);
+            margin: 5px 0 20px;
+        }
+        input::placeholder {
+            color: #888;
+        }
+        button {
+            background-color: #007BFF;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .feedback {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Seja Bem-vindo ao Console Auris</h1>
+        <h2>Arquivo: Bardo</h2>
+        <form>
+            <p>1</p>
+            <input type="text" name="resposta1" placeholder="???" required>
+            
+            <p>2</p>
+            <input type="text" name="resposta2" placeholder="???" required>
+            
+            <p>3</p>
+            <input type="text" name="resposta3" placeholder="???" required>
+            
+            <p>4</p>
+            <input type="text" name="resposta4" placeholder="???" required>
+            
+            <p>5</p>
+            <input type="text" name="resposta5" placeholder="???" required>
+            
+            <button type="submit">Enviar Respostas</button>
+            <div class="feedback" id="feedback"></div>
+        </form>
+    </div>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const respostas = [
+                document.querySelector('input[name=resposta1]').value.toLowerCase(),
+                document.querySelector('input[name=resposta2]').value.toLowerCase(),
+                document.querySelector('input[name=resposta3]').value.toLowerCase(),
+                document.querySelector('input[name=resposta4]').value.toLowerCase(),
+                document.querySelector('input[name=resposta5]').value.toLowerCase()
+            ];
+            
+            const respostasCorretas = [
+                'the_time_is_a_weapon',
+                'for_you_and_with_you',
+                'reincarnation',
+                'remember_you',
+                'prototipo_divino'
+            ];
+
+            const feedback = document.getElementById('feedback');
+            if (JSON.stringify(respostas) === JSON.stringify(respostasCorretas)) {
+                feedback.textContent = 'https://youtu.be/_aAPB8TMaIg';
+                feedback.style.color = 'green';
+            } else {
+                feedback.textContent = 'Console Auris: ALGUMA SENHA ESTÁ INCORRETA';
+                feedback.style.color = 'red';
+            }
+        });
+    </script>
+</body>
+</html>
